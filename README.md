@@ -3,3 +3,4 @@
 Major commits: 
 
 1. 2017-08-03: Initial commit. 
+1. 2017-08-03: on `dev` branch, updated `hist()` examples.

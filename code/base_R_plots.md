@@ -97,4 +97,62 @@ To see the default parameters of a function, and all of the other arguments that
 ?hist
 ```
 
-This will open the `Help` window on your computer and show you the arguments and defaults for a function. 
+This will open the `Help` window on your computer and show you the arguments and defaults for a function. The `Help` page for a function is the first place I go to troubleshoot an issue.
+
+Let's make the histogram look a little bit nicer. The first thing I want to do is color in the bars of the histogram so they stand out more. The `col` argument takes a color inside of `""`.
+
+
+```r
+hist(iris$Sepal.Length, col = "grey")
+```
+
+<img src="base_R_plots_files/figure-html/hist_2-1.png" style="display: block; margin: auto;" />
+
+A few things to mention here: 
+
+* Note that I am building on the previous code. Right now it is OK to copy and paste and then add to the code with `col = "grey"`. There are a lot of colors in base `R` that you can spell out. Try changing `col = ""` to something else.
+* I am spelling out the name of the color. You can also specify color using `rgb` values of `#hex` codes. More on that later. 
+* from here on out I will be changing plots incrementally and tweak one thing at a time. You don't need to do it this way but it is convenient when starting out because if your code doesn't work you know exactly where it broke.
+
+Now I am going to make the title easier to read my changing the `main` argument:
+
+
+```r
+hist(iris$Sepal.Length, col = "grey", main = "Sepal length")
+```
+
+<img src="base_R_plots_files/figure-html/hist_3-1.png" style="display: block; margin: auto;" />
+
+Or I could make it go away entirely with by telling `R` not to plot anything in the title by leaving the `""` empty:
+
+
+```r
+hist(iris$Sepal.Length, col = "grey", main = "")
+```
+
+<img src="base_R_plots_files/figure-html/hist_4-1.png" style="display: block; margin: auto;" />
+
+The x-axis label looks pretty bad with the name of the vector. Let's change it using the `xlab` (short for x label) argument:
+
+
+```r
+hist(iris$Sepal.Length, col = "grey", main = "", xlab = "Sepal length (cm)")
+```
+
+<img src="base_R_plots_files/figure-html/hist_5-1.png" style="display: block; margin: auto;" />
+
+The next thing I want to change is the orientation of the numbers on the y-axis. I want them facing the same way as the labels on the x axis to make it easier for people to read. I will adjust this using the `las`, which will accept a value between `0` and 3.
+
+* `las = 0` - Label is parallel to the axis (default).
+* `las = 1` - Label is horizontal to the axis (awesome).
+* `las = 2` - Label is perpendicular to the axis (why?).
+* `las = 3` - Label is placed vertically (really, why?).
+
+
+```r
+hist(iris$Sepal.Length, col = "grey", main = "", xlab = "Sepal length (cm)", las = 1)
+```
+
+<img src="base_R_plots_files/figure-html/hist_6-1.png" style="display: block; margin: auto;" />
+
+Play with the different `las =` and see how label orientation changes. 
